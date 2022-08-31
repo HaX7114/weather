@@ -46,7 +46,7 @@ class TemperatureForecastingContainer extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(
                     top: 3,
-                    bottom: temps[index].toDouble(),
+                    bottom: setPadding(index),
                   ),
                   child: Transform.rotate(
                     angle: setAngle(index),
@@ -75,11 +75,18 @@ class TemperatureForecastingContainer extends StatelessWidget {
   }
 
   double setAngle(int index) {
-    //
     return index + 1 < temps.length && temps[index + 1] < temps[index]
-        ? 0.03 //This means that the angle will be a little bit lower to express that the next temp will be lower than the current temp
+        ? 0.019 //This means that the angle will be a little bit lower to express that the next temp will be lower than the current temp
         : index + 1 < temps.length && temps[index + 1] > temps[index]
-            ? -0.03 //This means that the angle will be a little bit higher to express that the next temp will be higher than the current temp
+            ? -0.01 //This means that the angle will be a little bit higher to express that the next temp will be higher than the current temp
             : 0.0; //This means that the angle will not change to express that the next temp will be equal to the current temp
+  }
+
+  double setPadding(int index) {
+    return temps[index] < 50.0 && temps[index] > 0.0
+        ? temps[index].toDouble()
+        : temps[index].toDouble() < 0.0
+            ? 0.0
+            : 48.0;
   }
 }
