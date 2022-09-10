@@ -27,46 +27,57 @@ class DayWeatherDetailsContainer extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-          width: 100.0,
+          width: 90.0,
           child: MyText(
             text: "$day",
             size: fontSizeM - 2,
           ),
         ),
-        Row(
-          children: [
-            Icon(
-              CupertinoIcons.drop_fill,
-              size: 15,
-              color: whiteColor.withOpacity(0.6),
-            ),
-            MyText(
-              text: "$humidity%",
-              size: fontSizeM - 4,
-              color: whiteColor.withOpacity(0.6),
-              fontWeight: FontWeight.normal,
-            ),
-          ],
+        SizedBox(
+          width: 50.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(
+                CupertinoIcons.drop_fill,
+                size: 15,
+                color: whiteColor.withOpacity(0.6),
+              ),
+              MyText(
+                text: "$humidity%",
+                size: fontSizeM - 4,
+                color: whiteColor.withOpacity(0.6),
+                fontWeight: FontWeight.normal,
+              ),
+            ],
+          ),
         ),
-        Row(
-          children: const [
-            Icon(
-              CupertinoIcons.circle_fill,
-              color: Colors.amber,
-              size: 20,
-            ),
-            K_hSpace10,
-            Icon(
-              CupertinoIcons.moon_fill,
-              color: Colors.amber,
-              size: 20,
-            ),
-          ],
+        SizedBox(
+          width: 60.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: const [
+              Icon(
+                CupertinoIcons.circle_fill,
+                color: Colors.amber,
+                size: 20,
+              ),
+              K_hSpace10,
+              Icon(
+                CupertinoIcons.moon_fill,
+                color: Colors.amber,
+                size: 20,
+              ),
+            ],
+          ),
         ),
-        MyText(
-          fontWeight: FontWeight.normal,
-          text: "$maxTemp$degreeSymbol $minTemp$degreeSymbol",
-          size: fontSizeM,
+        SizedBox(
+          width: 60.0,
+          child: MyText(
+            fontWeight: FontWeight.normal,
+            text: "$maxTemp$degreeSymbol $minTemp$degreeSymbol",
+            size: fontSizeM,
+          ),
         ),
       ],
     );

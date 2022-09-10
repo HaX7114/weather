@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:weather/presentation/home_screen/home_screen_cubit/home_screen_cubit.dart';
+import 'package:weather/utils/functions/restart_app.dart';
+import 'package:weather/utils/functions/terminate_app.dart';
 
 import '../../../../utils/styles/colors.dart';
 import '../../../../utils/styles/cosntants.dart';
@@ -43,11 +42,7 @@ class LocationServicesNotAllowedAppAlert extends StatelessWidget {
               Expanded(
                 child: MyButton(
                   onPressed: () {
-                    if (Platform.isIOS) {
-                      exit(0);
-                    } else {
-                      SystemNavigator.pop();
-                    }
+                    terminateApp();
                   },
                   text: 'Close App',
                   textColor: Colors.red,
@@ -62,7 +57,7 @@ class LocationServicesNotAllowedAppAlert extends StatelessWidget {
               Expanded(
                 child: MyButton(
                   onPressed: () async {
-                    await cubit.initLocationService();
+                    restartApp(context);
                   },
                   text: 'Allow',
                   textColor: Colors.green,

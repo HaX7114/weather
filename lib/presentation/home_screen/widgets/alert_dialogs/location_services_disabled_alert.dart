@@ -1,8 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:weather/presentation/home_screen/home_screen_cubit/home_screen_cubit.dart';
+import 'package:weather/utils/functions/terminate_app.dart';
 
 import '../../../../utils/styles/colors.dart';
 import '../../../../utils/styles/cosntants.dart';
@@ -43,11 +41,7 @@ class LocationServicesDisabledAlert extends StatelessWidget {
               Expanded(
                 child: MyButton(
                   onPressed: () {
-                    if (Platform.isIOS) {
-                      exit(0);
-                    } else {
-                      SystemNavigator.pop();
-                    }
+                    terminateApp();
                   },
                   text: 'Close App',
                   textColor: Colors.red,
@@ -61,8 +55,9 @@ class LocationServicesDisabledAlert extends StatelessWidget {
               K_hSpace10,
               Expanded(
                 child: MyButton(
-                  onPressed: () async {
-                    await cubit.openLocationSettingsAndRetry();
+                  onPressed: () {
+                    cubit.openLocationSettingsAndRetry();
+                    terminateApp();
                   },
                   text: 'Enable',
                   textColor: Colors.green,

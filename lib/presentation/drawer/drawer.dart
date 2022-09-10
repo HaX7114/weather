@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:weather/presentation/drawer/widgets/drawer_list_item.dart';
+import 'package:weather/presentation/drawer/widgets/Location_list_item.dart';
 import 'package:weather/presentation/drawer/widgets/drawer_title.dart';
 import 'package:weather/presentation/drawer/widgets/footer_row.dart';
+import 'package:weather/presentation/home_screen/home_screen_cubit/home_screen_cubit.dart';
+import 'package:weather/presentation/manage_locations.dart/manage_locations.dart';
 import 'package:weather/presentation/shared_widgets/my_button.dart';
+import 'package:weather/presentation/shared_widgets/my_text.dart';
+import 'package:weather/utils/functions/navigation_functions.dart';
 import 'package:weather/utils/styles/colors.dart';
 import 'package:weather/utils/styles/device_dimensions.dart';
 import 'package:weather/utils/styles/spaces.dart';
-
 import '../../utils/styles/cosntants.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  final currentLocationName;
+  final currentLocationCurrentTemp;
+  final HomeScreenCubit homeScreenCubit;
+  const MyDrawer({
+    Key? key,
+    required this.homeScreenCubit,
+    required this.currentLocationName,
+    required this.currentLocationCurrentTemp,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +29,7 @@ class MyDrawer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
-          color: const Color(0XFF2E3842),
+          color: const Color.fromARGB(255, 27, 32, 36),
         ),
         height: double.infinity,
         width: DeviceDimensions.getWidthOfDevice(context) * 0.8,
@@ -41,16 +52,17 @@ class MyDrawer extends StatelessWidget {
                   ),
                   K_vSpace20,
                   DrawerTitle(
-                    title: 'Favourite location',
+                    title: 'Current location',
                     icon: Icons.star_rounded,
                     setInfo: true,
                   ),
                   K_vSpace20,
-                  //List of favorites
-                  DrawerListItem(
-                      locationName: 'El Hay El Asher',
-                      degree: '34',
-                      isFavoriteItem: true),
+                  LocationListItem(
+                    locationName: '$currentLocationName',
+                    degree: '$currentLocationCurrentTemp',
+                    isFavoriteItem: true,
+                    color: whiteColor,
+                  ),
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 20.0),
                     child: Divider(color: whiteColor, thickness: 1.0),
@@ -59,16 +71,25 @@ class MyDrawer extends StatelessWidget {
                       title: 'Other locations',
                       icon: Icons.add_location_outlined),
                   K_vSpace20,
-                  //List of locations
-                  DrawerListItem(locationName: 'El Hay El Asher', degree: '34'),
+                  //List of favorites
+                  setSavedLocationsOrSetNoLocationsAvailable(
+                    homeScreenCubit.getSavedLocations(),
+                    homeScreenCubit.getSavedTemps(),
+                  ),
                   K_vSpace20,
                   MyButton(
                     fillColor: whiteColor.withOpacity(0.2),
                     text: 'Manage locations',
-                    height: 50.0,
-                    textSize: fontSizeM,
+                    height: 45.0,
+                    textSize: fontSizeM - 1,
                     textColor: whiteColor.withOpacity(0.7),
-                    onPressed: () {},
+                    onPressed: () {
+                      navigateTo(
+                          context,
+                          ManageLocations(
+                            homeScreenCubit: homeScreenCubit,
+                          ));
+                    },
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 20.0),
@@ -86,5 +107,32 @@ class MyDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget setSavedLocationsOrSetNoLocationsAvailable(
+      listOfLocations, listOfTemps) {
+    if (listOfLocations.isEmpty) {
+      return Center(
+        child: MyText(
+          text: '  No locations available',
+          size: fontSizeM - 1,
+          fontWeight: FontWeight.normal,
+          color: blueColor,
+        ),
+      );
+    } else {
+      return ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: listOfLocations.length,
+        itemBuilder: (context, index) {
+          return LocationListItem(
+            locationName: listOfLocations[index],
+            degree: listOfTemps[index],
+            color: whiteColor,
+          );
+        },
+      );
+    }
   }
 }

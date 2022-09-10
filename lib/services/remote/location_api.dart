@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 
-class LocationApi {
+class LocationAPI {
   static const int locationServiceIsDisabled = 0;
   static const int allowedPermission = 1;
   static const int deniedPermission = 2;
 
-  static Future<void> openLocationSettings() async {
-    await Geolocator.openLocationSettings();
+  static Future<bool> openLocationSettings() async {
+    return await Geolocator.openLocationSettings();
   }
 
   static Future<int> getLocation() async {
@@ -26,7 +26,7 @@ class LocationApi {
     bool permissionAllowed;
     int result = locationServiceIsDisabled; //default
 
-    serviceEnabled = await _isLocationServiceEnabled();
+    serviceEnabled = await isLocationServiceEnabled();
     if (serviceEnabled) {
       permissionAllowed = await _isPermissionServiceAllowed();
       if (permissionAllowed) {
@@ -43,7 +43,7 @@ class LocationApi {
     return await Geolocator.checkPermission();
   }
 
-  static Future<bool> _isLocationServiceEnabled() async {
+  static Future<bool> isLocationServiceEnabled() async {
     return await Geolocator.isLocationServiceEnabled();
   }
 

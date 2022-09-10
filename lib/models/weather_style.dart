@@ -17,7 +17,7 @@ class WeatherStyle {
     required this.weatherIconColor,
     required this.weatherLottie,
     this.colorOpacity = 1.0,
-    this.weatherLottieFitStyle = BoxFit.cover,
+    this.weatherLottieFitStyle,
     this.colorOne = blackColor,
     this.colorTwo = blackColor,
   });
@@ -27,6 +27,7 @@ class WeatherStyle {
       weatherIcon: CupertinoIcons.sunrise_fill,
       weatherIconColor: Colors.amberAccent,
       weatherLottie: sunriseLottiePath,
+      weatherLottieFitStyle: BoxFit.fitHeight,
       colorOpacity: 0.5,
     );
   }
@@ -36,6 +37,7 @@ class WeatherStyle {
       weatherIcon: CupertinoIcons.sun_min_fill,
       weatherIconColor: Colors.amber,
       weatherLottie: afternoonLottiePath,
+      weatherLottieFitStyle: BoxFit.fitHeight,
       colorOpacity: 0.4,
       colorOne: blueColor,
       colorTwo: blueColor,
@@ -48,13 +50,13 @@ class WeatherStyle {
       weatherIconColor: const Color(0XFFEF8D8C),
       weatherLottie: sunsetLottiePath,
       colorOpacity: 0.3,
-      weatherLottieFitStyle: BoxFit.fill,
+      weatherLottieFitStyle: BoxFit.fitWidth,
     );
   }
 
   static WeatherStyle nightSkyWeatherStyle() {
     return WeatherStyle(
-      weatherIcon: CupertinoIcons.moon_fill,
+      weatherIcon: CupertinoIcons.moon_stars_fill,
       weatherIconColor: whiteColor,
       weatherLottie: nightSkyLottiePath,
       weatherLottieFitStyle: BoxFit.fill,
