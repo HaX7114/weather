@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:weather/utils/styles/spaces.dart';
 import '../../../data/constants.dart';
-import '../../../utils/styles/colors.dart';
 import '../../../utils/styles/cosntants.dart';
 import '../../shared_widgets/my_text.dart';
 
-class DrawerListItem extends StatelessWidget {
+class LocationListItem extends StatelessWidget {
   final locationName;
   final degree;
-  bool isFavoriteItem;
-  DrawerListItem(
+  final bool isFavoriteItem;
+  final Color color;
+  const LocationListItem(
       {Key? key,
       required this.locationName,
       required this.degree,
+      required this.color,
       this.isFavoriteItem = false})
       : super(key: key);
 
@@ -30,7 +31,7 @@ class DrawerListItem extends StatelessWidget {
               Icon(
                 Icons.location_pin,
                 size: isFavoriteItem ? 15.0 : 0.0,
-                color: whiteColor,
+                color: color,
               ),
               K_hSpace10,
               MyText(
@@ -38,8 +39,7 @@ class DrawerListItem extends StatelessWidget {
                 size: fontSizeM,
                 fontWeight:
                     isFavoriteItem ? FontWeight.bold : FontWeight.normal,
-                color:
-                    isFavoriteItem ? whiteColor : whiteColor.withOpacity(0.7),
+                color: isFavoriteItem ? color : color.withOpacity(0.7),
               )
             ],
           ),
@@ -53,7 +53,7 @@ class DrawerListItem extends StatelessWidget {
               MyText(
                 text: '$degree$degreeSymbol',
                 size: fontSizeM,
-                color: whiteColor.withOpacity(0.7),
+                color: color.withOpacity(0.7),
                 fontWeight: FontWeight.normal,
               )
             ],
