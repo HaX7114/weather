@@ -1,16 +1,32 @@
-# weather
+# Weather app
+![App](https://user-images.githubusercontent.com/62621180/189498333-798d7891-5496-4a5f-9fea-23acf53583bc.png)
 
-A new Flutter project.
 
-## Getting Started
+## Flutter Weather App With Adaptive Time UI and Animations 
+## Using Open Weather API as Remote and Shared Preferences as local
 
-This project is a starting point for a Flutter application.
+## App Video Preview :
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://user-images.githubusercontent.com/62621180/189497310-de2654f3-459f-4f3f-8613-5a5d9700c414.mp4
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+## App Dependencies :
+## cupertino_icons: ^1.0.2
+## google_fonts: ^3.0.1
+## fluttertoast: ^8.0.9
+## page_transition: ^2.0.9
+## lottie: ^1.4.1
+## animate_do: ^2.1.0
+## geolocator: ^9.0.1
+## bloc: ^8.1.0
+## flutter_bloc: ^8.1.1
+## dio: ^4.0.6
+## conditional_builder_null_safety: ^0.0.6
+## loading_animation_widget: ^1.2.0+2
+## flutter_phoenix: ^1.1.0
+## intl: ^0.17.0
+## shared_preferences: ^2.0.15
+
+
