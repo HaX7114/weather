@@ -36,7 +36,7 @@ https://user-images.githubusercontent.com/62621180/189497310-de2654f3-459f-4f3f-
 ## Case 4: 
 ### when the user is enabled the location services,granted the permission and enabled the internet data the app shows this :
 
-### 1-Getting The Location Data:
+### 1-Getting Weather Data:
 
 ![Screenshot_2022-09-11-17-54-48-66](https://user-images.githubusercontent.com/62621180/189523227-319d9cd2-b580-4dcd-b171-ff46fe8af548.jpg)
 
