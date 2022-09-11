@@ -8,6 +8,10 @@
 
 
 
+https://user-images.githubusercontent.com/62621180/189551329-dbb68229-c893-4284-9db6-71fc7e81ac0f.mp4
+
+
+
 ## How App Works ?
 ## First of all the app is trying to get the location data (Lat | Lon) by showing this :
 
