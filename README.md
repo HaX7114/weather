@@ -2,7 +2,7 @@
 ![App](https://user-images.githubusercontent.com/62621180/189498333-798d7891-5496-4a5f-9fea-23acf53583bc.png)
 
  
-## As a Backend Used Open Weather API as Remote and Shared Preferences as local
+## Backend Used Open Weather API as Remote and Shared Preferences as local
 
 ## App Video Preview :
 
